@@ -72,13 +72,40 @@ greetMe("World");</code> <br> <br>
       </section>
       <section class="main-section" id="variable scope">
         <header>Variable scope</header>
-        
+        <p>When you declare a variable outside of any function, it is called a global variable, because it is available to any other code in the current document. When you declare a variable within a function, it is called a local variable, because it is available only within that function. <br> <br>
+
+<code>if (true) { var x = 5; } console.log(x); // 5</code> <br> <br>
+
+<p>This behavior changes, when using the let declaration introduced in ECMAScript 2015.</p> <br> <br>
+
+<code>if (true) { let y = 5; } console.log(y); // ReferenceError: y is
+not defined</code> <br> <br>
       </section>
       <section class="main-section" id="global variable">
         <header>Global variables</header>
+        <header>Global variables</header>
+    <p>Global variables are in fact properties of the global object. In web pages the global object is window, so you can set and access global variables using the window.variable syntax. <br> <br>
+
+Consequently, you can access global variables declared in one window or frame from another window or frame by specifying the window or frame name. For example, if a variable called phoneNumber is declared in a document, you can refer to this variable from an iframe as parent.phoneNumber.</p>
       </section>
       <section class="main-section" id="constant">
         <header>Constant</header>
+         <p>You can create a read-only, named constant with the const keyword. The syntax of a constant identifier is the same as for a variable identifier: it must start with a letter, underscore or dollar sign and can contain alphabetic, numeric, or underscore characters.</p> <br> <br>
+
+<code>const PI = 3.14;</code> <br> <br>
+<p>A constant cannot change value through assignment or be re-declared while the script is running. It has to be initialized to a value. <br> <br>
+
+The scope rules for constants are the same as those for let block scope variables. If the const keyword is omitted, the identifier is assumed to represent a variable. <br> <br>
+
+You cannot declare a constant with the same name as a function or variable in the same scope. For example:<br> <br></p>
+
+<code>// THIS WILL CAUSE AN ERROR function f() {}; const f = 5; // THIS
+WILL CAUSE AN ERROR ALSO function f() { const g = 5; var g;
+//statements }</code> <br> <br>
+<p>However, object attributes are not protected, so the following statement is executed without problems. <br> <br></p>
+
+<code>const MY_OBJECT = {"key": "value"}; MY_OBJECT.key =
+"otherValue";</code> <br> <br>
       </section>
     </main>
   </body>
